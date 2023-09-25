@@ -1,5 +1,7 @@
 # Node JS
 
+## Basics
+
 - Node JS is a JavaScript runtime
 - It allows JavaScript on the server
 - Node JS uses V8 engine which is JavaScript engine build by google
@@ -13,7 +15,7 @@
 
 ![Node JS on the server](photo/js-on-the-server.png)
 
-- Node JS rule - 
+- Node JS rule -
 
 ![Node JS rule](photo/nodejs-role.png)
 
@@ -22,6 +24,8 @@
 
 ![HTTP & HTTPS](photo/http-https.png)
 
-- How the web works - 
+- How the web works -
 
 ![Web works](photo/how-the-web-works.png)
+
+##
