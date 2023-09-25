@@ -1,3 +1,20 @@
+# Table Of Content
+
+- [Table Of Content](#table-of-content)
+- [Node JS](#node-js)
+  - [Basics](#basics)
+  - [How The Web Works](#how-the-web-works)
+  - [Creating a Node Server](#creating-a-node-server)
+  - [The Node Lifecycle and Event Loop](#the-node-lifecycle-and-event-loop)
+  - [Understanding Requests](#understanding-requests)
+  - [Sending Responses](#sending-responses)
+  - [Routing Requests](#routing-requests)
+  - [Redirecting Requests](#redirecting-requests)
+  - [Parsing Request Bodies](#parsing-request-bodies)
+  - [Understanding Event Driven Code Execution](#understanding-event-driven-code-execution)
+  - [Blocking and Non-Blocking Code](#blocking-and-non-blocking-code)
+  - [Node.js Looking Behind the Scenes](#nodejs-looking-behind-the-scenes)
+
 # Node JS
 
 ## Basics
@@ -270,4 +287,20 @@ server.listen(3000)
 
 ## Node.js Looking Behind the Scenes
 
-- 
+- _Important Note:_ Node JS uses only one single JavaScript thread
+- A thread is a process in my operating system
+- Event loop is automatically started by Node JS when the program starts
+- It's responsible for handling event callbacks
+- So, basically the event loop will only handle callbacks that contain fast finishing code
+- Node JS automatically started Worker Pool
+- Worker Pool is responsible for all the heavy lifting
+
+![Single Thread, Event Loop & Blocking Code](photo/single-thread.png)
+
+- _In Picture:_
+  - Node JS open a file using Worker Pool (heavy work)
+  - After finishing, trigger callback
+  - Then Node JS give that easy work to the event loop
+- Overall Event Loop works - 
+
+![The Event Loop](photo/the-event-loop.png)
