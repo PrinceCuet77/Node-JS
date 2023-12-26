@@ -14,6 +14,11 @@
   - [Understanding Event Driven Code Execution](#understanding-event-driven-code-execution)
   - [Blocking and Non-Blocking Code](#blocking-and-non-blocking-code)
   - [Node.js Looking Behind the Scenes](#nodejs-looking-behind-the-scenes)
+  - [Using the Node Modules System](#using-the-node-modules-system)
+    - [Single Export](#single-export)
+    - [Multiple Export (Way - 01)](#multiple-export-way---01)
+    - [Multiple Export (Way - 02)](#multiple-export-way---02)
+    - [Multiple Export (Way - 03)](#multiple-export-way---03)
 
 # Node JS
 
