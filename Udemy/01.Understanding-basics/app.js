@@ -1,10 +1,8 @@
 const http = require('http')
 
+const routes = require('./routes')
 
-const rqListener = (req, res) => {
+console.log(routes.someText)
 
-}
-
-const server = http.createServer(rqListener)
-
+const server = http.createServer(routes.hander)
 server.listen(3000)

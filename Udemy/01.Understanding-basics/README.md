@@ -70,6 +70,12 @@ const server = http.createServer(rqListener)
 server.listen(3000)
 ```
 
+- Run the project
+
+```cmd
+npm app.js
+```
+
 ## The Node Lifecycle and Event Loop
 
 - The core node application is managed by the event loop
@@ -109,7 +115,7 @@ Request Headers: {
 
 ## Sending Responses
 
-- `res.setHeader()` attachs a header to the response
+- `res.setHeader()` attaches a header to the response
 - Passing some meta information where the type of the context is `html`
 - `res.write()` allows to write some data to the response
 - `res.end()` sends the response to the client
@@ -301,6 +307,76 @@ server.listen(3000)
   - Node JS open a file using Worker Pool (heavy work)
   - After finishing, trigger callback
   - Then Node JS give that easy work to the event loop
-- Overall Event Loop works - 
+- Overall Event Loop works -
 
 ![The Event Loop](photo/the-event-loop.png)
+
+## Using the Node Modules System
+
+### Single Export
+
+- Export from `route.js` file:
+
+```js
+const requestHandler = (req, res) => {}
+
+// 'requestHandler' stored in module.exports
+module.exports = requestHandler
+```
+
+- Import from `app.js` file:
+
+```js
+const routes = require('./routes')
+
+const server = http.createServer(routes)
+server.listen(3000)
+```
+
+### Multiple Export (Way - 01)
+
+- Export from `route.js` file:
+
+```js
+const requestHandler = (req, res) => {}
+
+// 'requestHandler' stored in module.exports
+module.exports = {
+  hander: requestHandler,
+  someText: 'Some hard coded text',
+}
+```
+
+- Import from `app.js` file:
+
+```js
+const routes = require('./routes')
+
+console.log(routes.someText) // Output: 'Some hard coded text'
+
+const server = http.createServer(routes.hander)
+server.listen(3000)
+```
+
+### Multiple Export (Way - 02)
+
+- Export from `route.js` file:
+
+```js
+const requestHandler = (req, res) => {}
+
+module.exports.hander = requestHandler
+module.exports.someText = 'Some hard coded text'
+```
+
+### Multiple Export (Way - 03)
+
+- Export from `route.js` file:
+
+```js
+const requestHandler = (req, res) => {}
+
+// Only works for multiple exports
+exports.hander = requestHandler
+exports.someText = 'Some hard coded text'
+```

@@ -44,4 +44,15 @@ const requestHandler = (req, res) => {
 }
 
 // 'requestHandler' stored in module.exports
-module.exports = requestHandler
+// module.exports = requestHandler
+
+// module.exports = {
+//   hander: requestHandler,
+//   someText: 'Some hard coded text',
+// }
+
+// module.exports.hander = requestHandler
+// module.exports.someText = 'Some hard coded text'
+
+exports.hander = requestHandler
+exports.someText = 'Some hard coded text'
