@@ -322,3 +322,20 @@ router.get('/add-product', (req, res, next) => {
   res.sendFile(path.join(rootDir, 'views', 'add-product.html'))
 })
 ```
+
+## Serving Files Statically
+
+- `Express.js` has a middleware that serves static files
+- As a parameter, it takes a path to the folder which I want to serve statically
+- That folder is only read access
+
+```js
+app.use(express.static(path.join(__dirname, 'public')))
+```
+
+- Create new CSS files like `/public/css/shop.css`
+- In `views/shop.html` file:
+
+```html
+<link rel="stylesheet" href="/css/shop.css" />
+```

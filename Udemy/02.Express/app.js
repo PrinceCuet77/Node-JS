@@ -11,6 +11,7 @@ const shopRouters = require('./routes/shop')
 const app = express() // Execute that function
 
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/admin', adminRouters)
 app.use(shopRouters)
