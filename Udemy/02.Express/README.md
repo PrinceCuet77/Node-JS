@@ -232,3 +232,57 @@ app.use((req, res, next) => {
   res.status(404).send('<h1>Page not found.</h1>')
 })
 ```
+
+## Filtering Paths
+
+- _Way-01:_ Filter in root level
+- In `admin.js` file:
+
+```js
+// /admin/add-product => GET
+router.get('/admin/add-product', (req, res, next) => {
+  res.send(
+    '<form action="/admin/add-product" method="POST"><input type="text" name="title"><button type="submit">Add Product</button></form>'
+  )
+})
+
+// /admin/add-product => POST
+router.post('/admin/add-product', (req, res, next) => {
+  console.log(req.body)
+  res.redirect('/')
+})
+```
+
+- In `app.js` file:
+
+```js
+const adminRouters = require('./routes/admin')
+
+app.use(adminRouters)
+```
+
+- _Way-02:_ Filter in top level
+- In `admin.js` file,
+
+```js
+// /admin/add-product => GET
+router.get('/add-product', (req, res, next) => {
+  res.send(
+    '<form action="/admin/add-product" method="POST"><input type="text" name="title"><button type="submit">Add Product</button></form>'
+  )
+})
+
+// /admin/add-product => POST
+router.post('/add-product', (req, res, next) => {
+  console.log(req.body)
+  res.redirect('/')
+})
+```
+
+- In `app.js` file:
+
+```js
+const adminRouters = require('./routes/admin')
+
+app.use('/admin', adminRouters)
+```

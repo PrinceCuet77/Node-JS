@@ -8,8 +8,8 @@ const app = express() // Execute that function
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
+app.use('/admin', adminRouters)
 app.use(shopRouters)
-app.use(adminRouters)
 
 app.use((req, res, next) => {
   res.status(404).send('<h1>Page not found.</h1>')
