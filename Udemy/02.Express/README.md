@@ -286,3 +286,16 @@ const adminRouters = require('./routes/admin')
 
 app.use('/admin', adminRouters)
 ```
+
+## Creating & Serving HTML Pages
+
+- For HTML Pages, use folder convension like `/views/add-products.html`
+- `__dirname` is a global variable that holds the absolute path based on OS
+
+```js
+const path = require('path')
+
+router.get('/add-product', (req, res, next) => {
+  res.sendFile(path.join(__dirname, '../', 'views', 'add-product.html'))
+})
+```
