@@ -296,6 +296,29 @@ app.use('/admin', adminRouters)
 const path = require('path')
 
 router.get('/add-product', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '../', 'views', 'add-product.html'))
+  res.sendFile(path.join(__dirname, '..', 'views', 'add-product.html'))
+})
+```
+
+## Using a Helper Function for Navigation
+
+- More cleaner way
+- In `utils/path.js` file:
+
+```js
+const path = require('path')
+
+module.exports = path.dirname(require.main.filename)
+```
+
+- In `routes/admin.js` file:
+
+```js
+const path = require('path')
+const rootDir = require('./../utils/path')
+
+router.get('/add-product', (req, res, next) => {
+  // res.sendFile(path.join(__dirname, '..', 'views', 'add-product.html'))
+  res.sendFile(path.join(rootDir, 'views', 'add-product.html'))
 })
 ```
